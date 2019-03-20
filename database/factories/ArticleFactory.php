@@ -11,9 +11,5 @@ $factory->define(Model::class, function (Faker $faker) {
         'userid'=> $faker->unique()->randomDigit
 
     ];
-    $table->string('title');
-    $table->mediumText('body');
-    $table->string('image');
-    $table->string('link');
-    $table->integer('userid');
+    
 });
