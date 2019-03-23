@@ -36,7 +36,15 @@ class FeedController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $feed = $request->isMethod('put')?Feeds::findOrFail($request->feed_id):new Feeds;
+        
+        $feed->id= $request->input('feed_id');
+        $feed->title= $request->input('title');
+        $feed->body= $request('body');
+        $feed->image= "Test Image String";
+        $feed->link="Test Link String";
+        $feed->user_id=4;
+
     }
 
     /**
