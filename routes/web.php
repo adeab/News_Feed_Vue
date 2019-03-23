@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+//List of feeds
+Route::get('feeds/api', 'FeedController@index');
+
+//Single feed
+Route::get('feeds/api/{id}', 'FeedController@show');
+
+//Create new feed
+Route::post('feeds/api', 'FeedController@store');
+
+//Update feed
+Route::put('feeds/api', 'FeedController@store');
+
+//Delete feed
+Route::delete('feeds/api', 'FeedController@destroy');

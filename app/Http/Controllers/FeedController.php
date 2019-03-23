@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
+use App\Feeds;
+use App\Http\Resources\Feed as FeedResource;
 
 class FeedController extends Controller
 {
@@ -14,6 +17,8 @@ class FeedController extends Controller
     public function index()
     {
         //
+        $feeds= Feeds::paginate(10);
+        return FeedResource::collection($feeds);
     }
 
     /**
@@ -42,7 +47,8 @@ class FeedController extends Controller
      */
     public function show($id)
     {
-        //
+        $feed = Feeds::findOrFail($id);
+        return new FeedResource($feed);
     }
 
     /**
