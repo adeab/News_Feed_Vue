@@ -44,6 +44,11 @@ class FeedController extends Controller
         $feed->image= "Test Image String";
         $feed->link="Test Link String";
         $feed->user_id=4;
+        
+        if($feed->save())
+        {
+            return new FeedResource($feed);
+        }
 
     }
 
@@ -76,6 +81,10 @@ class FeedController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $feed = Feeds::findOrFail($id);
+        if ($feed->delete()){
+            return new FeedResource($feed);
+        }
+       
     }
 }

@@ -27,4 +27,6 @@ Route::post('feeds/api', 'FeedController@store');
 Route::put('feeds/api', 'FeedController@store');
 
 //Delete feed
-Route::delete('feeds/api', 'FeedController@destroy');
+Route::delete('feeds/api/{id}', 'FeedController@destroy');
+
+Route::get('feeds', 'PagesController@feed');
