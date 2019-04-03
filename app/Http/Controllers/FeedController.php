@@ -17,7 +17,7 @@ class FeedController extends Controller
     public function index()
     {
         //
-        $feeds= Feeds::paginate(10);
+        $feeds= Feeds::orderBy('created_at', 'desc')->paginate(6);
         return FeedResource::collection($feeds);
     }
 
@@ -40,10 +40,10 @@ class FeedController extends Controller
         
         $feed->id= $request->input('feed_id');
         $feed->title= $request->input('title');
-        $feed->body= $request('body');
-        $feed->image= "Test Image String";
-        $feed->link="Test Link String";
-        $feed->user_id=4;
+        $feed->body= $request->input('body');
+        // $feed->image= "Test Image String";
+        // $feed->link="Test Link String";
+        // $feed->user_id=4;
         
         if($feed->save())
         {
@@ -85,6 +85,7 @@ class FeedController extends Controller
         if ($feed->delete()){
             return new FeedResource($feed);
         }
+        
        
     }
 }

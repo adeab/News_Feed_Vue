@@ -16,3 +16,12 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Create new feed
+Route::post('feed', 'FeedController@store');
+//Update feed
+Route::put('feed', 'FeedController@store');
+//Delete feed
+Route::delete('feed/{id}', 'FeedController@destroy');
+
+
